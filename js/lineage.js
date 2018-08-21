@@ -347,6 +347,7 @@ function Lineage() {
 
     users.forEach(function(user) {
       context.beginPath();
+      context
       user.values.forEach(drawNode);
       context.fillStyle = color(user.values[0].lastName);
       context.fill();
@@ -445,6 +446,12 @@ function Lineage() {
   }
 
   function drawNode(d) {
+    // My Added Code To Insert The Images For Each Node. 
+    var img = document.getElementById('img');
+    var top = d.x - 3;
+    var left = d.y -3;
+    context.drawImage(img, top, left, 7,7);
+    context.globalCompositeOperation='destination-over';
     context.moveTo(d.x, d.y);
     context.arc(d.x, d.y, 5, 0, 2 * Math.PI);
   }
@@ -475,19 +482,19 @@ function Lineage() {
 
   function timeStart(name, config) {
     if (config.debug ) {
-      console.time(name);
+    // console.time(name);
     }
   }
 
   function timeEnd(name, config) {
     if (config.debug) {
-      console.timeEnd(name);
+     // console.timeEnd(name);
     }
   }
 
   function log(message, config) {
     if (config.debug) {
-      console.log(message);
+     // console.log(message);
     }
   }
 
@@ -527,9 +534,9 @@ function Lineage() {
   }
 
   lin.print = function() {
-    console.log(links);
-    console.log(nodes);
-    console.log(simulation);
+  //  console.log(links);
+   // console.log(nodes);
+   // console.log(simulation);
   }
 
   return lin;
